@@ -1,11 +1,10 @@
 ipykernel
 streamlit
 faiss-cpu
+typing_extensions
 langchain
-langchain_huggingface
 langchain_groq
 gradio 
-typing-extensions
 python-dotenv
 langchain_community
 pypdf

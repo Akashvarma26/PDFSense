@@ -24,7 +24,8 @@ os.environ['GROQ_API_KEY'] = os.getenv('GROQ_API_KEY')
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 # Streamlit app
-st.title("PDFSense : PDF Question and Answering with Session Chat History")
+st.title("𝖯𝖣𝖥𝖲𝖾𝗇𝗌𝖾 : 𝖯𝖣𝖥 𝖰𝗎𝖾𝗌𝗍𝗂𝗈𝗇 𝖺𝗇𝖽 𝖠𝗇𝗌𝗐𝖾𝗋𝗂𝗇𝗀 𝗐𝗂𝗍𝗁 𝖲𝖾𝗌𝗌𝗂𝗈𝗇 𝖢𝗁𝖺𝗍 𝖧𝗂𝗌𝗍𝗈𝗋𝗒")
+st.markdown('####')
 st.write("Upload PDFs and ask questions related to the content of the PDFs.")
 llm = ChatGroq(model="Gemma2-9b-It")
 session_id = st.text_input("Session ID", value="common_session")
@@ -32,10 +33,10 @@ session_id = st.text_input("Session ID", value="common_session")
 # Manage chat history
 if 'store' not in st.session_state:
     st.session_state.store = {}
-
+st.markdown('####')
 # Upload files and document loading
 uploaded_files = st.file_uploader("Drop the PDF files here", type="pdf", accept_multiple_files=True)
-
+st.markdown('####')
 if uploaded_files:
     documents = []
     for uploaded_file in uploaded_files:
@@ -115,6 +116,8 @@ if uploaded_files:
             },
         )
 
+        st.write("### Response")
+        st.success(response['answer'])
         # Display the chat history
         st.write("### Chat History")
         for message in session_history.messages:
@@ -128,12 +131,11 @@ if uploaded_files:
 
             if role == "user":
                 with st.chat_message("user"):
-                    st.write(content)
+                    st.success(content)
             elif role == "assistant":
                 with st.chat_message("assistant"):
-                    st.write(content)
+                    st.success(content)
             elif role == "system":
                 with st.chat_message("system"):
                     st.markdown(f"**System Message:** {content}")
-
         #st.write("Assistant:", response['answer'])
