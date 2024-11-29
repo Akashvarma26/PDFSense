@@ -1,8 +1,23 @@
-- name: Push to Hugging Face Spaces
-  env:
-    HF_TOKEN: ${{ secrets.HF1_TOKEN }}
-  run: |
-    git remote set-url origin https://huggingface.co/spaces/AkashVD26/pdfsense
-    git config --global user.name "Akashvarma26"
-    git config --global user.email "akashvdatla@gmail.com"
-    git push https://AkashVD26:${HF_TOKEN1}@huggingface.co/spaces/AkashVD26/pdfsense main
+name: Sync to Hugging Face hub
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN1 }}
+        run: |
+          git config --global user.name "Akashvarma26"
+          git config --global user.email "akashvdatla@gmail.com"
+          git remote set-url origin https://huggingface.co/spaces/AkashVD26/pdfsense
+          git push origin main
