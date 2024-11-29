@@ -20,7 +20,7 @@ jobs:
 
       - name: Push to Hugging Face Spaces
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN1 }}
+          HF_TOKEN1: ${{ secrets.HF_TOKEN1 }}
         run: |
-          git remote add huggingface https://AkashVD26:${HF_TOKEN}@huggingface.co/spaces/AkashVD26/pdfsense.git
+          git remote add huggingface https://AkashVD26:${HF_TOKEN1}@huggingface.co/spaces/AkashVD26/pdfsense.git
           git push huggingface main
