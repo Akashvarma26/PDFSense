@@ -54,3 +54,17 @@ streamlit run app.py
 - [FAISS](https://ai.meta.com/tools/faiss/)
 - [Groq](https://groq.com)
 - [streamlit](https://www.langchain.com)
+
+## Configuration for HF Space
+---
+title: Pdfsense
+emoji: 📜
+colorFrom: red
+colorTo: red
+sdk: streamlit
+sdk_version: 1.40.2
+app_file: app.py
+pinned: false
+license: apache-2.0
+short_description: PDF Answering Assistant
+---
