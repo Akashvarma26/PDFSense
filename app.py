@@ -38,7 +38,7 @@ if uploaded_files:
     for uploaded_file in uploaded_files:
         temppdf = "./temp.pdf"
         with open(temppdf, "wb") as file:
-            file.write(uploaded_file.getvalue())
+            file.write(uploaded_file.read())
         docs = PyPDFLoader(temppdf).load()
         documents.extend(docs)
     os.remove("./temp.pdf")  # Clean up temporary file
