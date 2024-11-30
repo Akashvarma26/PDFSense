@@ -1,4 +1,3 @@
-<!--
 ---
 title: Pdfsense
 emoji: 📜
@@ -13,7 +12,6 @@ short_description: PDF Answering Assistant
 ---
 
 Check out the configuration reference at [Hugging Face Spaces Config](https://huggingface.co/docs/hub/spaces-config-reference).         
--->
 # 📜 PDFSense : PDF Question Answering Assistant with Chat History           
 
 PDFSense is an LLM-powered Streamlit application that enables users to upload PDFs and ask questions based on the document's content. It uses a Retrieval-Augmented Generation (RAG) approach to provide accurate, context-aware answers by incorporating previous chat history of the current session.               
