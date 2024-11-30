@@ -31,14 +31,14 @@ if "messages" not in st.session_state:
     st.session_state["messages"] = [
         {"role": "assistant", "content": "Hi! I am PDFSense. Upload your PDF and ask me anything related to it."}
     ]
-
+st.text("If the application fails to read the PDFs, try refreshing the webpage.")
 # Process PDFs if uploaded
 if uploaded_files:
     documents = []
     for uploaded_file in uploaded_files:
         temppdf = "./temp.pdf"
         with open(temppdf, "wb") as file:
-            file.write(uploaded_file.read())
+            file.write(uploaded_file.getvalue())
         docs = PyPDFLoader(temppdf).load()
         documents.extend(docs)
     os.remove("./temp.pdf")  # Clean up temporary file
@@ -70,20 +70,22 @@ if uploaded_files:
     rag_chain = create_retrieval_chain(history_aware_ret, qa_chain)
 
 # Display chat history
-for msg in st.session_state["messages"]:
-    st.chat_message(msg["role"]).write(msg["content"])
+    for msg in st.session_state["messages"]:
+        st.chat_message(msg["role"]).write(msg["content"])
 
 # User input handling
-if user_input := st.chat_input(placeholder="Ask a question about your uploaded PDF..."):
-    st.session_state["messages"].append({"role": "user", "content": user_input})
-    st.chat_message("user").write(user_input)
+    if user_input := st.chat_input(placeholder="Ask a question about your uploaded PDF..."):
+        st.session_state["messages"].append({"role": "user", "content": user_input})
+        st.chat_message("user").write(user_input)
 
-    # Run retrieval and answer generation using invoke()
-    with st.chat_message("assistant"):
-        chat_history = [{"role": msg["role"], "content": msg["content"]} for msg in st.session_state["messages"]]
-        result = rag_chain.invoke({"input": user_input, "chat_history": chat_history})
-        
-        # Extract and display only the answer
-        answer = result.get("answer", "I don't know.")
-        st.session_state["messages"].append({"role": "assistant", "content": answer})
-        st.write(answer)
+        # Run retrieval and answer generation using invoke()
+        with st.chat_message("assistant"):
+            chat_history = [{"role": msg["role"], "content": msg["content"]} for msg in st.session_state["messages"]]
+            result = rag_chain.invoke({"input": user_input, "chat_history": chat_history})
+            
+            # Extract and display only the answer
+            answer = result.get("answer", "I don't know.")
+            st.session_state["messages"].append({"role": "assistant", "content": answer})
+            st.write(answer)
+else:
+    st.error("Enter PDFs.")
