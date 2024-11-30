@@ -1,4 +1,3 @@
-<!--
 ---
 title: Pdfsense
 emoji: 📜
@@ -12,8 +11,7 @@ license: apache-2.0
 short_description: PDF Answering Assistant
 ---         
 
-Check out the configuration reference at [Hugging Face Spaces Config](https://huggingface.co/docs/hub/spaces-config-reference).
--->
+Check out the configuration reference at [Hugging Face Spaces Config](https://huggingface.co/docs/hub/spaces-config-reference).         
 
 # 📜 PDFSense : PDF Question Answering Assistant with Chat History           
 
