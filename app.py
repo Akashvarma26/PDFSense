@@ -24,7 +24,7 @@ st.set_page_config(page_title="PDFSense", page_icon="📜")
 st.title("📜 𝐏𝐃𝐅𝐒𝐞𝐧𝐬𝐞 : 𝐏𝐃𝐅 𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧 𝐀𝐧𝐬𝐰𝐞𝐫𝐢𝐧𝐠 𝐚𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐰𝐢𝐭𝐡 𝐂𝐡𝐚𝐭 𝐇𝐢𝐬𝐭𝐨𝐫𝐲")
 
 # PDF Uploader Section (Keeps it at the top)
-uploaded_files = st.file_uploader("Drop PDF files here", type="pdf", accept_multiple_files=False)
+uploaded_files = st.file_uploader("Drop PDF files here", type="pdf", accept_multiple_files=True)
 
 # Initialize chat history
 if "messages" not in st.session_state:
