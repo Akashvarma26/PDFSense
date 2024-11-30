@@ -1,16 +1,3 @@
----
-title: Pdfsense
-emoji: 📜
-colorFrom: red
-colorTo: red
-sdk: streamlit
-sdk_version: 1.40.2
-app_file: app.py
-pinned: false
-license: apache-2.0
-short_description: PDF Answering Assistant
----
-
 # 📜 PDFSense : PDF Question Answering Assistant with Chat History           
 
 PDFSense is an LLM-powered Streamlit application that enables users to upload PDFs and ask questions based on the document's content. It uses a Retrieval-Augmented Generation (RAG) approach to provide accurate, context-aware answers by incorporating previous chat history of the current session.               
